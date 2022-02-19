@@ -22,6 +22,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//MongoDB connect 
+const mongoose = require('mongoose');
+const url = 'mongodb://localhost:27017/myAuth'
+const connect = mongoose.connect(url)
+
+connect.then((db)=>{
+  console.log('Connect to Mongo Server');
+}, (err)=>{
+  console.log(err);
+})
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
