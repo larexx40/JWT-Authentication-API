@@ -6,7 +6,7 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     password: {
-        type: string
+        type: String
     },
     firstname:{
         type: String,
@@ -19,6 +19,9 @@ const UserSchema = mongoose.Schema({
     email:{
         type: String,
         unique: true
+    },
+    token:{
+        type: String
     },
     admin: {
         type: Boolean,
