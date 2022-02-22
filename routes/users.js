@@ -4,6 +4,7 @@ const jwt = require ('jsonwebtoken')
 
 const config = require('../config');
 const Users = require('../models/users');
+const auth = require ('../authentication')
 
 var userRouter = express.Router();
 
@@ -91,6 +92,10 @@ userRouter.post('/login', (req, res, next)=>{
       
     }
   })
-
 })
+
+userRouter.post('/welcome', auth, (req , res)=>{
+  res.status(200).send('Token verified, you welcome')
+})
+
 module.exports = userRouter;
